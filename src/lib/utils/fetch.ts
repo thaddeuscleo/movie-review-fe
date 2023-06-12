@@ -1,6 +1,6 @@
 import { PRIVATE_MOVIEDB_TOKEN } from '$env/static/private';
 
-    const options = {
+const options = {
 	method: 'GET',
 	headers: {
 		accept: 'application/json',
@@ -9,5 +9,5 @@ import { PRIVATE_MOVIEDB_TOKEN } from '$env/static/private';
 };
 
 export const fetchFromMovieDB = (url: string): Promise<any> => {
-    return fetch(url, options)
-}
+	return fetch(url, options);
+};

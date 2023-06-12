@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let review: any;
-    const emojis = ['😁', '😍', '😭', '😡', '😱', '😨'];
+	const emojis = ['😁', '😍', '😭', '😡', '😱', '😨'];
 </script>
 
 <div class="bg-slate-300 m-10 p-5">
