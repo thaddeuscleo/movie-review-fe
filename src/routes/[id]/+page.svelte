@@ -20,11 +20,11 @@
 		</div>
 		<div class="flex justify-center items-center grayscale-0 w-full h-screen">
 			<img
-				class="w-2/3 h-auto p-20 rounded-lg object-cover -rotate-6"
+				class="w-2/4 h-auto p-20 rounded-lg object-cover -rotate-6"
 				src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
 				alt="poster_path_image"
 			/>
-			<div class="w-2/4">
+			<div class="w-2/4 p-5">
 				<h2 class="text-white text-5xl font-bold">{movie.original_title}</h2>
 				<div class="w-2/3 h-0.5 bg-slate-400 my-3" />
 				<div class="flex my-3">
