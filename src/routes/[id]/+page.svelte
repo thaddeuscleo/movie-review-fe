@@ -5,6 +5,10 @@
 	export let data: PageData;
 </script>
 
+<svelte:head>
+	<title>Movie Review Detail</title>
+</svelte:head>
+
 {#await data.moviePromise}
 	<p>Loading</p>
 {:then movie}
@@ -16,7 +20,7 @@
 		</div>
 		<div class="flex justify-center items-center grayscale-0 w-full h-screen">
 			<img
-				class="w-1/3 h-auto p-20 rounded-lg object-cover -rotate-6"
+				class="w-2/3 h-auto p-20 rounded-lg object-cover -rotate-6"
 				src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
 				alt="poster_path_image"
 			/>
@@ -45,7 +49,7 @@
 {#await data.reviewPromise}
 	<p>Loading</p>
 {:then reviews}
-	<div>
+	<div class="relative bg-black min-h-screen">
 		<h3 class="mx-5 p-5 text-white text-5xl font-bold">Reviews</h3>
 		<div class="p-5">
 			{#each reviews.results as review}
