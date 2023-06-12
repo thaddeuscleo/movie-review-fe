@@ -1,27 +1,19 @@
-import { PRIVATE_MOVIEDB_TOKEN } from "$env/static/private";
-import type { PageServerLoad } from "../$types";
+import type { PageServerLoad } from '../$types';
+import { fetchFromMovieDB } from '../../lib/utils/fetch';
 
-export const load = (async ({fetch, params}) => {
+export const load = (async ({ params }) => {
 	const id = (params as any).id;
-    const apiUrl = `https://api.themoviedb.org/3/movie/${id}?language=en-US`
-	const reviewApiUrl = `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US`
+	const movieDetailUrl = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
+	const movieReviewApiUrl = `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US`;
 
-    const options = {
-		method: 'GET',
-		headers: {
-			accept: 'application/json',
-			Authorization: `Bearer ${PRIVATE_MOVIEDB_TOKEN}`
-		}
-	};
+	// const item = fetchFromMovieDB(movieDetailUrl);
+	// const item = await res.json();
 
-    const res = await fetch(apiUrl, options);
-	const item = await res.json();
-
-	const reviewRes = await fetch(reviewApiUrl, options);
-	const review = await reviewRes.json()
+	// const reviewRes = await fetchFromMovieDB(movieReviewApiUrl);
+	// const review = await reviewRes.json();
 
 	return {
-		item,
-		review
+		moviePromise: fetchFromMovieDB(movieDetailUrl).then(res => res.json()),
+		reviewPromise: fetchFromMovieDB(movieReviewApiUrl).then(res => res.json())
 	};
 }) satisfies PageServerLoad;
